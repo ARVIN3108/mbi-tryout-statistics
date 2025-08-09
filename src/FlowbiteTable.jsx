@@ -2,6 +2,20 @@ import { useState, useEffect } from "react";
 import readXlsxFile from "read-excel-file";
 export default function FlowbiteTable() {
   const [data, setData] = useState(null);
+  const [filteredData, setFilteredData] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // A simple debounce function
+  // function debounce(func, delay) {
+  //   let timeoutId;
+  //   return function (...args) {
+  //     clearTimeout(timeoutId);
+  //     timeoutId = setTimeout(() => {
+  //       func.apply(this, args);
+  //     }, delay);
+  //   };
+  // }
+
   useEffect(() => {
     // The path is relative to the `public` folder
     const filePath = `/data/27-7-25/saintek.xlsx`;
@@ -15,12 +29,31 @@ export default function FlowbiteTable() {
       .then((blob) => readXlsxFile(blob))
       .then((rows) => {
         setData(rows);
+        setFilteredData(rows);
       })
       .catch((err) => {
         console.error("Error reading the Excel file:", err);
         setData(null);
       });
   }, []); // The empty dependency array ensures this effect runs only once
+
+  const handleSearch = (event) => {
+    const newSearchTerm = event.target.value.toLowerCase();
+    setSearchTerm(newSearchTerm);
+    // If the search term is empty, set filteredData back to the original data
+    if (newSearchTerm === "") {
+      setFilteredData(data);
+    } else {
+      // Otherwise, filter the data as before
+      const newData = data.filter(
+        (student) =>
+          student[2]?.toLowerCase().includes(newSearchTerm) ||
+          student[1] == newSearchTerm ||
+          student[17]?.toLowerCase().includes(newSearchTerm),
+      );
+      setFilteredData(newData);
+    }
+  };
   return (
     <div className="relative h-screen overflow-x-auto px-6 py-4">
       <div className="flex-column flex flex-wrap items-center justify-between space-y-4 pb-4 sm:flex-row sm:space-y-0">
@@ -325,7 +358,9 @@ export default function FlowbiteTable() {
             type="text"
             id="table-search"
             className="block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            placeholder="Cari Nama Siswa / No. Peserta"
+            placeholder="Cari Nama Siswa / No. Peserta / Lembaga"
+            value={searchTerm}
+            onChange={handleSearch}
           />
         </div>
       </div>
@@ -352,13 +387,19 @@ export default function FlowbiteTable() {
               BNR
             </th>
             <th scope="col" className="p-4">
-              No
+              INA
+              <br />
+              NIL
             </th>
             <th scope="col" className="p-4">
-              No
+              ENG
+              <br />
+              BNR
             </th>
             <th scope="col" className="p-4">
-              No
+              ENG
+              <br />
+              NIL
             </th>
             <th scope="col" className="p-4">
               No
@@ -398,19 +439,26 @@ export default function FlowbiteTable() {
           </tr>
         </thead>
         <tbody>
-          {data &&
-            data.map((row, rowIndex) => (
+          {filteredData &&
+            filteredData.map((row, rowIndex) => (
               <tr
                 key={rowIndex}
                 className="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600"
               >
-                <td className="w-4 p-4">{rowIndex + 1}</td>
+                <td key={rowIndex} className="w-4 p-4">
+                  {rowIndex + 1}
+                </td>
                 {row.map((cell, cellIndex) => {
                   if (cellIndex == 1 || cellIndex == 17)
-                    return <td className="px-6 py-4">{cell}</td>;
+                    return (
+                      <td key={cellIndex} className="px-6 py-4">
+                        {cell}
+                      </td>
+                    );
                   if (cellIndex == 2)
                     return (
                       <th
+                        key={cellIndex}
                         scope="row"
                         className="px-6 py-4 text-left font-medium whitespace-nowrap text-gray-900 dark:text-white"
                       >
@@ -419,15 +467,19 @@ export default function FlowbiteTable() {
                     );
                   if (cellIndex >= 3 && cellIndex <= 16)
                     return (
-                      <td className="w-4 p-4">
+                      <td key={cellIndex} className="w-4 p-4">
                         {parseFloat(parseFloat(cell).toFixed(2))}
                       </td>
                     );
-                  return <td className="w-4 p-4">{cell}</td>;
+                  return (
+                    <td key={cellIndex} className="w-4 p-4">
+                      {cell}
+                    </td>
+                  );
                 })}
               </tr>
             ))}
-          <tr className="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
+          {/* <tr className="border-b border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
             <td className="w-4 p-4">1</td>
             <td className="w-4 p-4">154</td>
             <td className="px-6 py-4">3112526001</td>
@@ -452,7 +504,7 @@ export default function FlowbiteTable() {
             <td className="w-4 p-4">1</td>
             <td className="w-4 p-4">1</td>
             <td className="px-6 py-4">Silver</td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
     </div>
