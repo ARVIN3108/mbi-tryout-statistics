@@ -374,7 +374,6 @@ export default function App() {
       ) : (
         <SAINTEKOldTable data={filteredData} />
       )}
-      d
     </div>
   );
 }
