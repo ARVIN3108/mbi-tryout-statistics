@@ -1,4 +1,4 @@
-# MBI Try Out Statistics
+# Amanatul Ummah Try Out Statistics
 
 This project was created based on my initiative to create a website that aims to recap the first to last tryouts.
 
