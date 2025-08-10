@@ -1,7 +1,7 @@
 export default function SAINTEKTable({ data }) {
   return (
     <table className="w-full text-center text-sm text-gray-500 opacity-90 rtl:text-right dark:text-gray-400">
-      <thead className="border-b-2 bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
+      <thead className="border-b-2 bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-300">
         <tr>
           <th scope="col" className="rounded-tl-lg p-4">
             No
@@ -100,10 +100,10 @@ export default function SAINTEKTable({ data }) {
           data.map((row, rowIndex) => (
             <tr
               key={rowIndex}
-              className={`${rowIndex == data.length - 1 ? "" : "border-b"} border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600`}
+              className={`${rowIndex != data.length - 1 && "border-b-2"} border-gray-200 bg-white font-medium hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600`}
             >
               <td
-                className={`w-4 p-4 ${rowIndex == data.length - 1 ? "rounded-bl-lg" : ""}`}
+                className={`w-4 p-4 ${rowIndex == data.length - 1 && "rounded-bl-lg"}`}
               >
                 {rowIndex + 1}
               </td>
@@ -112,7 +112,7 @@ export default function SAINTEKTable({ data }) {
                   return (
                     <td
                       key={cellIndex}
-                      className={`px-6 py-4 ${rowIndex == data.length - 1 && cellIndex == 18 ? "rounded-br-lg" : ""}`}
+                      className={`px-6 py-4 ${cellIndex === 18 && `text-gray-900 dark:text-white ${rowIndex === data.length - 1 && "rounded-br-lg"}`}`}
                     >
                       {cell}
                     </td>
@@ -122,7 +122,7 @@ export default function SAINTEKTable({ data }) {
                     <th
                       key={cellIndex}
                       scope="row"
-                      className="px-6 py-4 text-left font-medium whitespace-nowrap text-gray-900 dark:text-white"
+                      className="px-6 py-4 text-left whitespace-nowrap text-gray-900 dark:text-white"
                     >
                       {cell}
                     </th>
@@ -134,7 +134,10 @@ export default function SAINTEKTable({ data }) {
                     </td>
                   );
                 return (
-                  <td key={cellIndex} className="w-4 p-4">
+                  <td
+                    key={cellIndex}
+                    className={`w-4 p-4 ${cellIndex == 0 && "text-gray-900 dark:text-white"}`}
+                  >
                     {cell}
                   </td>
                 );

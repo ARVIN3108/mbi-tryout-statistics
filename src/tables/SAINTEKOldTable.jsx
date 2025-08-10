@@ -95,10 +95,10 @@ export default function SAINTEKOldTable({ data }) {
           data.map((row, rowIndex) => (
             <tr
               key={rowIndex}
-              className={`${rowIndex == data.length - 1 ? "" : "border-b"} border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600`}
+              className={`${rowIndex != data.length - 1 && "border-b-2"} border-gray-200 bg-white font-medium hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600`}
             >
               <td
-                className={`w-4 p-4 ${rowIndex == data.length - 1 ? "rounded-bl-lg" : ""}`}
+                className={`w-4 p-4 ${rowIndex == data.length - 1 && "rounded-bl-lg"}`}
               >
                 {rowIndex + 1}
               </td>
@@ -107,7 +107,7 @@ export default function SAINTEKOldTable({ data }) {
                   return (
                     <td
                       key={cellIndex}
-                      className={`px-6 py-4 ${rowIndex == data.length - 1 && cellIndex == 17 ? "rounded-br-lg" : ""}`}
+                      className={`px-6 py-4 ${cellIndex === 17 && `text-gray-900 dark:text-white ${rowIndex === data.length - 1 && "rounded-br-lg"}`}`}
                     >
                       {cell}
                     </td>
@@ -117,7 +117,7 @@ export default function SAINTEKOldTable({ data }) {
                     <th
                       key={cellIndex}
                       scope="row"
-                      className="px-6 py-4 text-left font-medium whitespace-nowrap text-gray-900 dark:text-white"
+                      className="px-6 py-4 text-left whitespace-nowrap text-gray-900 dark:text-white"
                     >
                       {cell}
                     </th>
@@ -129,7 +129,10 @@ export default function SAINTEKOldTable({ data }) {
                     </td>
                   );
                 return (
-                  <td key={cellIndex} className="w-4 p-4">
+                  <td
+                    key={cellIndex}
+                    className={`w-4 p-4 ${cellIndex == 0 && "text-gray-900 dark:text-white"}`}
+                  >
                     {cell}
                   </td>
                 );

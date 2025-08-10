@@ -107,7 +107,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative h-screen overflow-x-auto bg-[url(assets/bg.png)] bg-cover bg-center py-4 pr-2 pl-4 bg-blend-multiply">
+    <div className="relative h-screen overflow-x-auto bg-[url(assets/bg.png)] bg-cover bg-center py-4 pr-2 pl-2.5 bg-blend-multiply">
       <div className="flex-column flex flex-wrap items-center justify-between space-y-4 pb-4 sm:flex-row sm:space-y-0">
         <div>
           <button
@@ -357,8 +357,8 @@ export default function App() {
           <input
             type="text"
             id="table-search"
-            className="block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            placeholder="Cari Nama Siswa / No. Peserta / Lembaga"
+            className="block w-60 rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            placeholder="Cari Nama Siswa / No. Peserta"
             value={searchTerm}
             onChange={handleInputChange}
           />
