@@ -47,18 +47,13 @@ export default function App() {
   const [selectedDate, setSelectedDate] = useState(0);
 
   // The path is relative to the `public` folder
-  const [filePath, setFilePath] = useState(
-    `/data/${date[selectedDate]}/saintek.xlsx`,
-  );
-
   function changeData(val) {
     setSearchTerm("");
     setSelectedDate(val);
-    setFilePath(`/data/${date[val]}/saintek.xlsx`);
-    readData();
+    readData(`/data/${date[val]}/saintek.xlsx`);
   }
 
-  function readData() {
+  function readData(filePath) {
     fetch(filePath)
       .then((response) => {
         if (!response.ok) throw new Error("Network response was not ok");
@@ -76,12 +71,14 @@ export default function App() {
   }
 
   useEffect(() => {
-    readData(filePath);
+    readData(`/data/${date[selectedDate]}/saintek.xlsx`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // The empty dependency array ensures this effect runs only once
 
   // The debounced search function. We wrap it in `useCallback` to prevent
   // it from being re-created on every render, which is crucial for
   // the debounce timer to work correctly.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSearch = useCallback(
     debounce((newSearchTerm) => {
       // If the search bar is empty, show all data.
@@ -176,7 +173,7 @@ export default function App() {
                   <div
                     className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
                     onClick={() => {
-                      changeData(key);
+                      if (key != selectedDate) changeData(key);
                     }}
                   >
                     <input
@@ -184,10 +181,8 @@ export default function App() {
                       type="radio"
                       defaultValue=""
                       name="filter-radio"
-                      defaultChecked={key == 0}
-                      onChange={() => {
-                        changeData(key);
-                      }}
+                      // defaultChecked={key == 0}
+                      defaultChecked={key == selectedDate}
                       className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
                     />
                     <label

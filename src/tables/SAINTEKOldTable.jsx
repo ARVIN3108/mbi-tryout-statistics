@@ -98,7 +98,6 @@ export default function SAINTEKOldTable({ data }) {
               className={`${rowIndex == data.length - 1 ? "" : "border-b"} border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600`}
             >
               <td
-                key={rowIndex}
                 className={`w-4 p-4 ${rowIndex == data.length - 1 ? "rounded-bl-lg" : ""}`}
               >
                 {rowIndex + 1}
