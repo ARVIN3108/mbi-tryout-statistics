@@ -107,7 +107,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative h-screen overflow-x-auto py-4 pr-2 pl-4">
+    <div className="relative h-screen overflow-x-auto bg-[url(assets/bg.png)] bg-cover bg-center py-4 pr-2 pl-4 bg-blend-multiply">
       <div className="flex-column flex flex-wrap items-center justify-between space-y-4 pb-4 sm:flex-row sm:space-y-0">
         <div>
           <button
