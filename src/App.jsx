@@ -175,12 +175,7 @@ export default function App() {
             >
               {date.map((str, key) => (
                 <li key={key}>
-                  <div
-                    className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
-                    onClick={() => {
-                      if (key != selectedDate) changeData(key, selectedType);
-                    }}
-                  >
+                  <div className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
                     <input
                       id={`date-` + key}
                       type="radio"
@@ -188,6 +183,9 @@ export default function App() {
                       name="date-radio"
                       defaultChecked={key == selectedDate}
                       className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
+                      onChange={() => {
+                        if (key != selectedDate) changeData(key, selectedType);
+                      }}
                     />
                     <label
                       htmlFor={`date-` + key}
@@ -263,12 +261,7 @@ export default function App() {
                 if (selectedDate == date.length - 1 && key == 2) return;
                 return (
                   <li key={key}>
-                    <div
-                      className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
-                      onClick={() => {
-                        if (key != selectedType) changeData(selectedDate, key);
-                      }}
-                    >
+                    <div className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
                       <input
                         id={`type-` + key}
                         type="radio"
@@ -276,6 +269,10 @@ export default function App() {
                         name="type-radio"
                         defaultChecked={key == selectedType}
                         className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
+                        onChange={() => {
+                          if (key != selectedType)
+                            changeData(selectedDate, key);
+                        }}
                       />
                       <label
                         htmlFor={`type-` + key}

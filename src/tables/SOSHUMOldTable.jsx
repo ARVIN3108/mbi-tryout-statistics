@@ -1,12 +1,12 @@
 export default function SOSHUMOldTable({ data }) {
   return (
-    <table className="w-full text-center text-sm text-gray-500 opacity-90 rtl:text-right dark:text-gray-400">
+    <table className="text-center text-sm text-gray-500 opacity-90 rtl:text-right dark:text-gray-400">
       <thead className="border-b-2 bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th scope="col" className="rounded-tl-lg p-4">
+          <th scope="col" className="rounded-tl-lg p-2">
             No
           </th>
-          <th scope="col" className="p-4 whitespace-nowrap">
+          <th scope="col" className="p-2 whitespace-nowrap">
             Rank
             <br />
             Se-AU
@@ -108,7 +108,7 @@ export default function SOSHUMOldTable({ data }) {
               className={`${rowIndex != data.length - 1 && "border-b-2"} border-gray-200 bg-white font-medium hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600`}
             >
               <td
-                className={`w-4 p-4 ${rowIndex == data.length - 1 && "rounded-bl-lg"}`}
+                className={`w-2 p-2 ${rowIndex == data.length - 1 && "rounded-bl-lg"}`}
               >
                 {rowIndex + 1}
               </td>
@@ -134,14 +134,14 @@ export default function SOSHUMOldTable({ data }) {
                   );
                 if (cellIndex >= 3 && cellIndex <= 18)
                   return (
-                    <td key={cellIndex} className="w-4 p-4">
+                    <td key={cellIndex} className="w-3 p-3">
                       {parseFloat(parseFloat(cell).toFixed(2))}
                     </td>
                   );
                 return (
                   <td
                     key={cellIndex}
-                    className={`w-4 p-4 ${cellIndex == 0 && "text-gray-900 dark:text-white"}`}
+                    className={`w-2 p-2 ${cellIndex == 0 && "text-gray-900 dark:text-white"}`}
                   >
                     {cell}
                   </td>
