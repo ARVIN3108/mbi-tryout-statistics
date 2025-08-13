@@ -1,7 +1,10 @@
+import date from "./date.json";
 import { useState, useEffect, useCallback } from "react";
 import readXlsxFile from "read-excel-file";
 import SAINTEKOldTable from "./tables/SAINTEKOldTable";
 import SAINTEKTable from "./tables/SAINTEKTable";
+import SOSHUMTable from "./tables/SOSHUMTable";
+import SOSHUMOldTable from "./tables/SOSHUMOldTable";
 
 // A utility function to delay the execution of a function.
 // This prevents the search logic from running on every keystroke,
@@ -39,18 +42,19 @@ function convertDateString(dateString) {
 }
 
 export default function App() {
-  const date = ["3-8-25", "27-7-25"];
-
+  const type = ["saintek", "soshum", "khos"];
   const [data, setData] = useState(null);
   const [filteredData, setFilteredData] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedDate, setSelectedDate] = useState(0);
+  const [selectedType, setSelectedType] = useState(0);
 
   // The path is relative to the `public` folder
-  function changeData(val) {
+  function changeData(valDate, valType) {
     setSearchTerm("");
-    setSelectedDate(val);
-    readData(`/data/${date[val]}/saintek.xlsx`);
+    setSelectedDate(valDate);
+    setSelectedType(valType);
+    readData(`/data/${date[valDate]}/${type[valType]}.xlsx`);
   }
 
   function readData(filePath) {
@@ -71,7 +75,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    readData(`/data/${date[selectedDate]}/saintek.xlsx`);
+    readData(`/data/${date[selectedDate]}/${type[selectedType]}.xlsx`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // The empty dependency array ensures this effect runs only once
 
@@ -107,7 +111,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative h-screen overflow-x-auto bg-[url(assets/bg.png)] bg-cover bg-center py-4 pr-2 pl-2.5 bg-blend-multiply">
+    <div className="relative h-screen overflow-x-auto bg-[url(assets/bg.png)] bg-cover bg-center px-2 py-4 bg-blend-multiply">
       <div className="flex-column flex flex-wrap items-center justify-between space-y-4 pb-4 sm:flex-row sm:space-y-0">
         <div>
           <button
@@ -117,7 +121,7 @@ export default function App() {
             type="button"
           >
             <svg
-              className="me-3 h-3 w-3 text-gray-500 dark:text-gray-400"
+              className="me-3 h-3 w-3 scale-150 text-gray-500 dark:text-gray-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="21"
@@ -173,15 +177,14 @@ export default function App() {
                   <div
                     className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
                     onClick={() => {
-                      if (key != selectedDate) changeData(key);
+                      if (key != selectedDate) changeData(key, selectedType);
                     }}
                   >
                     <input
                       id={`date-` + key}
                       type="radio"
                       defaultValue=""
-                      name="filter-radio"
-                      // defaultChecked={key == 0}
+                      name="date-radio"
                       defaultChecked={key == selectedDate}
                       className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
                     />
@@ -203,15 +206,24 @@ export default function App() {
             type="button"
           >
             <svg
-              className="me-3 h-3 w-3 text-gray-500 dark:text-gray-400"
+              class="me-3 h-3 w-3 scale-150 text-gray-500 dark:text-gray-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 20 20"
+              width="22"
+              height="22"
+              fill="none"
+              viewBox="0 0 22 22"
             >
-              <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z" />
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"
+              />
             </svg>
-            Last 30 days
+
+            {type[selectedType]?.toUpperCase()}
             <svg
               className="ms-2.5 h-2.5 w-2.5"
               aria-hidden="true"
@@ -246,92 +258,34 @@ export default function App() {
               className="space-y-1 p-3 text-sm text-gray-700 dark:text-gray-200"
               aria-labelledby="typeDropdownButton"
             >
-              <li>
-                <div className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
-                  <input
-                    id="filter-radio-example-1"
-                    type="radio"
-                    defaultValue=""
-                    name="filter-radio"
-                    className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
-                  />
-                  <label
-                    htmlFor="filter-radio-example-1"
-                    className="ms-2 w-full rounded-sm text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Last 1day
-                  </label>
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
-                  <input
-                    defaultChecked=""
-                    id="filter-radio-example-2"
-                    type="radio"
-                    defaultValue=""
-                    name="filter-radio"
-                    className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
-                  />
-                  <label
-                    htmlFor="filter-radio-example-2"
-                    className="ms-2 w-full rounded-sm text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Last 7 days
-                  </label>
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
-                  <input
-                    id="filter-radio-example-3"
-                    type="radio"
-                    defaultValue=""
-                    name="filter-radio"
-                    className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
-                  />
-                  <label
-                    htmlFor="filter-radio-example-3"
-                    className="ms-2 w-full rounded-sm text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Last 30 days
-                  </label>
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
-                  <input
-                    id="filter-radio-example-4"
-                    type="radio"
-                    defaultValue=""
-                    name="filter-radio"
-                    className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
-                  />
-                  <label
-                    htmlFor="filter-radio-example-4"
-                    className="ms-2 w-full rounded-sm text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Last month
-                  </label>
-                </div>
-              </li>
-              <li>
-                <div className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
-                  <input
-                    id="filter-radio-example-5"
-                    type="radio"
-                    defaultValue=""
-                    name="filter-radio"
-                    className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
-                  />
-                  <label
-                    htmlFor="filter-radio-example-5"
-                    className="ms-2 w-full rounded-sm text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Last year
-                  </label>
-                </div>
-              </li>
+              {type.map((str, key) => {
+                if (selectedDate == date.length - 1 && key == 2) return;
+                return (
+                  <li key={key}>
+                    <div
+                      className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                      onClick={() => {
+                        if (key != selectedType) changeData(selectedDate, key);
+                      }}
+                    >
+                      <input
+                        id={`type-` + key}
+                        type="radio"
+                        defaultValue=""
+                        name="type-radio"
+                        defaultChecked={key == selectedType}
+                        className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
+                      />
+                      <label
+                        htmlFor={`type-` + key}
+                        className="ms-2 w-full rounded-sm text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        {str.toUpperCase()}
+                      </label>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -365,9 +319,15 @@ export default function App() {
         </div>
       </div>
       {selectedDate == 0 ? (
-        <SAINTEKTable data={filteredData} />
-      ) : (
+        selectedType == 0 ? (
+          <SAINTEKTable data={filteredData} />
+        ) : (
+          <SOSHUMTable data={filteredData} />
+        )
+      ) : selectedType == 0 ? (
         <SAINTEKOldTable data={filteredData} />
+      ) : (
+        <SOSHUMOldTable data={filteredData} />
       )}
     </div>
   );
