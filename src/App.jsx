@@ -1,3 +1,4 @@
+import { base } from "../config";
 import date from "./date.json";
 import { useState, useEffect, useCallback } from "react";
 import readXlsxFile from "read-excel-file";
@@ -54,7 +55,7 @@ export default function App() {
     setSearchTerm("");
     setSelectedDate(valDate);
     setSelectedType(valType);
-    readData(`/data/${date[valDate]}/${type[valType]}.xlsx`);
+    readData(base + `data/${date[valDate]}/${type[valType]}.xlsx`);
   }
 
   function readData(filePath) {
@@ -75,7 +76,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    readData(`/data/${date[selectedDate]}/${type[selectedType]}.xlsx`);
+    readData(base + `data/${date[selectedDate]}/${type[selectedType]}.xlsx`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // The empty dependency array ensures this effect runs only once
 
