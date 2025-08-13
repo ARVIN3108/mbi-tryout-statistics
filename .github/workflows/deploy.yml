@@ -13,6 +13,7 @@ on:
       - "!.eslint.config.js"
       - "!.prettierrc"
       - "!previews/**"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -59,3 +60,5 @@ jobs:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           external_repository: ARVIN3108/hasiltryoutakbar
           publish_dir: ./dist
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
