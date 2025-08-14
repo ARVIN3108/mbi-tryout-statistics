@@ -3,7 +3,7 @@ name: Build & Deploy
 on:
   push:
     branches:
-      - master
+      - au/akbar
     paths:
       - "**"
       - "!*.yml"
@@ -45,7 +45,7 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && startsWith(github.event.head_commit.message, '[deploy]')
+    if: github.ref == 'refs/heads/au/akbar' && startsWith(github.event.head_commit.message, '[deploy]')
 
     steps:
       - name: Download artifact
