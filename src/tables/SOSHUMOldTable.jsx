@@ -1,7 +1,7 @@
 export default function SOSHUMOldTable({ data }) {
   return (
     <table className="text-center text-sm text-gray-500 opacity-90 rtl:text-right dark:text-gray-400">
-      <thead className="border-b-2 bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
+      <thead className="border-b-2 bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-300">
         <tr>
           <th scope="col" className="rounded-tl-lg p-2">
             No
@@ -18,72 +18,65 @@ export default function SOSHUMOldTable({ data }) {
             Nama Siswa
           </th>
           <th scope="col" className="p-4">
-            INA
+            <span className="absolute -mt-0.5 -ml-2">INDONESIA</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            INA
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            ENG
+            <span className="absolute -mt-0.5">ENGLISH</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            ENG
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            MAT
+            <span className="absolute -mt-0.5 -ml-3.5">MATEMATIKA</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            MAT
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            EKO
+            <span className="absolute -mt-0.5 -ml-0.5">EKONOMI</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            EKO
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            GEO
+            <span className="absolute -mt-0.5 -ml-1">GEOGRAFI</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            GEO
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            SOS
+            <span className="absolute -mt-0.5 -ml-1.5">SOSIOLOGI</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            SOS
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            SEJ
+            <span className="absolute -mt-0.5">SEJARAH</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            SEJ
             <br />
             NIL
           </th>

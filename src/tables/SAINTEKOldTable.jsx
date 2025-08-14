@@ -1,7 +1,7 @@
 export default function SAINTEKOldTable({ data }) {
   return (
     <table className="w-full text-center text-sm text-gray-500 opacity-90 rtl:text-right dark:text-gray-400">
-      <thead className="border-b-2 bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
+      <thead className="border-b-2 bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-300">
         <tr>
           <th scope="col" className="rounded-tl-lg p-4">
             No
@@ -18,62 +18,56 @@ export default function SAINTEKOldTable({ data }) {
             Nama Siswa
           </th>
           <th scope="col" className="p-4">
-            INA
+            <span className="absolute -mt-0.5 -ml-2">INDONESIA</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            INA
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            ENG
+            <span className="absolute -mt-0.5">ENGLISH</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            ENG
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            MAT
+            <span className="absolute -mt-0.5 -ml-3.5">MATEMATIKA</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            MAT
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            FIS
+            <span className="absolute -mt-0.5 ml-2.5">FISIKA</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            FIS
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            BIO
+            <span className="absolute -mt-0.5 ml-1">BIOLOGI</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            BIO
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            KIM
+            <span className="absolute -mt-0.5 ml-2.5">KIMIA</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            KIM
             <br />
             NIL
           </th>

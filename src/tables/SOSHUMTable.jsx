@@ -18,72 +18,65 @@ export default function SOSHUMTable({ data }) {
             Nama Siswa
           </th>
           <th scope="col" className="p-4">
-            INA
+            <span className="absolute -mt-0.5 -ml-2">INDONESIA</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            INA
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            ENG
+            <span className="absolute -mt-0.5">ENGLISH</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            ENG
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            MAT
+            <span className="absolute -mt-0.5 -ml-3.5">MATEMATIKA</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            MAT
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            EKO
+            <span className="absolute -mt-0.5 -ml-0.5">EKONOMI</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            EKO
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            GEO
+            <span className="absolute -mt-0.5 -ml-1">GEOGRAFI</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            GEO
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            SOS
+            <span className="absolute -mt-0.5 -ml-1.5">SOSIOLOGI</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            SOS
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            SEJ
+            <span className="absolute -mt-0.5">SEJARAH</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            SEJ
             <br />
             NIL
           </th>

@@ -18,72 +18,65 @@ export default function SAINTEKTable({ data }) {
             Nama Siswa
           </th>
           <th scope="col" className="p-4">
-            INA
+            <span className="absolute -mt-0.5 -ml-2">INDONESIA</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            INA
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            ENG
+            <span className="absolute -mt-0.5">ENGLISH</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            ENG
-            <br />
-            NIL
-          </th>
-          <th scope="col" className="p-4 whitespace-nowrap">
-            MAT W
-            <br />
-            BNR
-          </th>
-          <th scope="col" className="p-4 whitespace-nowrap">
-            MAT W
-            <br />
-            NIL
-          </th>
-          <th scope="col" className="p-4 whitespace-nowrap">
-            MAT M
-            <br />
-            BNR
-          </th>
-          <th scope="col" className="p-4 whitespace-nowrap">
-            MAT M
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            FIS
+            <span className="absolute -mt-0.5 -ml-2">MAT WAJIB</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            FIS
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            BIO
+            <span className="absolute -mt-0.5 -ml-2.5">MAT MINAT</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            BIO
             <br />
             NIL
           </th>
           <th scope="col" className="p-4">
-            KIM
+            <span className="absolute -mt-0.5 ml-2">FISIKA</span>
             <br />
             BNR
           </th>
           <th scope="col" className="p-4">
-            KIM
+            <br />
+            NIL
+          </th>
+          <th scope="col" className="p-4">
+            <span className="absolute -mt-0.5 ml-1">BIOLOGI</span>
+            <br />
+            BNR
+          </th>
+          <th scope="col" className="p-4">
+            <br />
+            NIL
+          </th>
+          <th scope="col" className="p-4">
+            <span className="absolute -mt-0.5 ml-2.5">KIMIA</span>
+            <br />
+            BNR
+          </th>
+          <th scope="col" className="p-4">
             <br />
             NIL
           </th>
