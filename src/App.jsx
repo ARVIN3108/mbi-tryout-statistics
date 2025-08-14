@@ -182,10 +182,14 @@ export default function App() {
                       type="radio"
                       defaultValue=""
                       name="date-radio"
-                      defaultChecked={key == selectedDate}
+                      checked={key == selectedDate}
                       className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
                       onChange={() => {
-                        if (key != selectedDate) changeData(key, selectedType);
+                        if (key != selectedDate) {
+                          if (key == date.length - 1 && selectedType == 2)
+                            changeData(key, 0);
+                          else changeData(key, selectedType);
+                        }
                       }}
                     />
                     <label
@@ -268,7 +272,7 @@ export default function App() {
                         type="radio"
                         defaultValue=""
                         name="type-radio"
-                        defaultChecked={key == selectedType}
+                        checked={key == selectedType}
                         className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
                         onChange={() => {
                           if (key != selectedType)
