@@ -22,6 +22,7 @@ export default function KHOSTable({ data }) {
             BNR
           </th>
           <th scope="col" className="p-3.5">
+            <span className="absolute -mt-0.5 -ml-5">ISTIMA'</span>
             <br />
             SLH
           </th>
@@ -34,6 +35,7 @@ export default function KHOSTable({ data }) {
             BNR
           </th>
           <th scope="col" className="p-3.5">
+            <span className="absolute -mt-0.5 -ml-6">QIROAH</span>
             <br />
             SLH
           </th>
@@ -46,6 +48,7 @@ export default function KHOSTable({ data }) {
             BNR
           </th>
           <th scope="col" className="p-3.5">
+            <span className="absolute -mt-0.5 -ml-6.5">KITABAH</span>
             <br />
             SLH
           </th>
@@ -58,6 +61,7 @@ export default function KHOSTable({ data }) {
             BNR
           </th>
           <th scope="col" className="p-3.5">
+            <span className="absolute -mt-0.5 -ml-6">NAHWU</span>
             <br />
             SLH
           </th>
@@ -70,6 +74,7 @@ export default function KHOSTable({ data }) {
             BNR
           </th>
           <th scope="col" className="p-3.5">
+            <span className="absolute -mt-0.5 -ml-6">SHOROF</span>
             <br />
             SLH
           </th>
@@ -82,6 +87,7 @@ export default function KHOSTable({ data }) {
             BNR
           </th>
           <th scope="col" className="p-3.5">
+            <span className="absolute -mt-0.5 -ml-8.5">BALAGHOH</span>
             <br />
             SLH
           </th>
