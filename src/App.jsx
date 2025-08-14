@@ -6,6 +6,7 @@ import SAINTEKOldTable from "./tables/SAINTEKOldTable";
 import SAINTEKTable from "./tables/SAINTEKTable";
 import SOSHUMTable from "./tables/SOSHUMTable";
 import SOSHUMOldTable from "./tables/SOSHUMOldTable";
+import KHOSTable from "./tables/KHOSTable";
 
 // A utility function to delay the execution of a function.
 // This prevents the search logic from running on every keystroke,
@@ -316,17 +317,12 @@ export default function App() {
           />
         </div>
       </div>
-      {selectedDate == 0 ? (
-        selectedType == 0 ? (
-          <SAINTEKTable data={filteredData} />
-        ) : (
-          <SOSHUMTable data={filteredData} />
-        )
-      ) : selectedType == 0 ? (
-        <SAINTEKOldTable data={filteredData} />
-      ) : (
-        <SOSHUMOldTable data={filteredData} />
-      )}
+      {selectedDate == date.length - 1
+        ? (selectedType == 0 && <SAINTEKOldTable data={filteredData} />) ||
+          (selectedType == 1 && <SOSHUMOldTable data={filteredData} />)
+        : (selectedType == 0 && <SAINTEKTable data={filteredData} />) ||
+          (selectedType == 1 && <SOSHUMTable data={filteredData} />) ||
+          (selectedType == 2 && <KHOSTable data={filteredData} />)}
     </div>
   );
 }
