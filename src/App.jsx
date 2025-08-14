@@ -205,7 +205,7 @@ export default function App() {
             type="button"
           >
             <svg
-              class="me-3 h-3 w-3 scale-150 text-gray-500 dark:text-gray-400"
+              className="me-3 h-3 w-3 scale-150 text-gray-500 dark:text-gray-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="22"
@@ -215,9 +215,9 @@ export default function App() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"
               />
             </svg>
