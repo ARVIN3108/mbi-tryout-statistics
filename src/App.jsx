@@ -72,6 +72,8 @@ export default function App() {
         setFilteredData(rows);
       })
       .catch((err) => {
+        setData([]);
+        setFilteredData([]);
         console.error("Error reading the Excel file:", err);
       });
   }
