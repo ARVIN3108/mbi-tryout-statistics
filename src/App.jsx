@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import readXlsxFile from "read-excel-file";
 import SAINTEKOldTable from "./tables/SAINTEKOldTable";
 import SAINTEKTable from "./tables/SAINTEKTable";
+import SAINTEKWithAverageTable from "./tables/SAINTEKWithAverageTable";
 import SOSHUMTable from "./tables/SOSHUMTable";
 import SOSHUMOldTable from "./tables/SOSHUMOldTable";
 import KHOSTable from "./tables/KHOSTable";
@@ -45,8 +46,8 @@ function convertDateString(dateString) {
 
 export default function App() {
   const type = ["saintek", "soshum", "khos"];
-  const [data, setData] = useState(null);
-  const [filteredData, setFilteredData] = useState(null);
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedDate, setSelectedDate] = useState(0);
   const [selectedType, setSelectedType] = useState(0);
@@ -326,7 +327,12 @@ export default function App() {
       {selectedDate == date.length - 1
         ? (selectedType == 0 && <SAINTEKOldTable data={filteredData} />) ||
           (selectedType == 1 && <SOSHUMOldTable data={filteredData} />)
-        : (selectedType == 0 && <SAINTEKTable data={filteredData} />) ||
+        : (selectedType == 0 &&
+            (date[selectedDate] == "10-8-25" ? (
+              <SAINTEKWithAverageTable data={filteredData} />
+            ) : (
+              <SAINTEKTable data={filteredData} />
+            ))) ||
           (selectedType == 1 && <SOSHUMTable data={filteredData} />) ||
           (selectedType == 2 && <KHOSTable data={filteredData} />)}
     </div>
