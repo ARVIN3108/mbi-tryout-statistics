@@ -1,4 +1,4 @@
-export default function SAINTEKWithAverageTable({ data }) {
+export default function SOSHUMWithAverageTable({ data }) {
   return (
     <table className="w-full text-center text-sm text-gray-500 opacity-90 rtl:text-right dark:text-gray-400">
       <thead className="border-b-2 bg-gray-50 text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-300">
@@ -36,7 +36,7 @@ export default function SAINTEKWithAverageTable({ data }) {
             NIL
           </th>
           <th scope="col" className="p-4">
-            <span className="absolute -mt-0.5 -ml-2">MAT WAJIB</span>
+            <span className="absolute -mt-0.5 -ml-3.5">MATEMATIKA</span>
             <br />
             BNR
           </th>
@@ -45,7 +45,7 @@ export default function SAINTEKWithAverageTable({ data }) {
             NIL
           </th>
           <th scope="col" className="p-4">
-            <span className="absolute -mt-0.5 -ml-2.5">MAT MINAT</span>
+            <span className="absolute -mt-0.5 -ml-0.5">EKONOMI</span>
             <br />
             BNR
           </th>
@@ -54,7 +54,7 @@ export default function SAINTEKWithAverageTable({ data }) {
             NIL
           </th>
           <th scope="col" className="p-4">
-            <span className="absolute -mt-0.5 ml-2">FISIKA</span>
+            <span className="absolute -mt-0.5 -ml-1">GEOGRAFI</span>
             <br />
             BNR
           </th>
@@ -63,7 +63,7 @@ export default function SAINTEKWithAverageTable({ data }) {
             NIL
           </th>
           <th scope="col" className="p-4">
-            <span className="absolute -mt-0.5 ml-0.5">BIOLOGI</span>
+            <span className="absolute -mt-0.5 -ml-1.5">SOSIOLOGI</span>
             <br />
             BNR
           </th>
@@ -72,7 +72,7 @@ export default function SAINTEKWithAverageTable({ data }) {
             NIL
           </th>
           <th scope="col" className="p-4">
-            <span className="absolute -mt-0.5 ml-2">KIMIA</span>
+            <span className="absolute -mt-0.5">SEJARAH</span>
             <br />
             BNR
           </th>

@@ -5,8 +5,9 @@ import readXlsxFile from "read-excel-file";
 import SAINTEKOldTable from "./tables/SAINTEKOldTable";
 import SAINTEKTable from "./tables/SAINTEKTable";
 import SAINTEKWithAverageTable from "./tables/SAINTEKWithAverageTable";
-import SOSHUMTable from "./tables/SOSHUMTable";
 import SOSHUMOldTable from "./tables/SOSHUMOldTable";
+import SOSHUMTable from "./tables/SOSHUMTable";
+import SOSHUMWithAverageTable from "./tables/SOSHUMWithAverageTable";
 import KHOSTable from "./tables/KHOSTable";
 
 // A utility function to delay the execution of a function.
@@ -333,7 +334,12 @@ export default function App() {
             ) : (
               <SAINTEKTable data={filteredData} />
             ))) ||
-          (selectedType == 1 && <SOSHUMTable data={filteredData} />) ||
+          (selectedType == 1 &&
+            (date[selectedDate] == "10-8-25" ? (
+              <SOSHUMWithAverageTable data={filteredData} />
+            ) : (
+              <SOSHUMTable data={filteredData} />
+            ))) ||
           (selectedType == 2 && <KHOSTable data={filteredData} />)}
     </div>
   );
