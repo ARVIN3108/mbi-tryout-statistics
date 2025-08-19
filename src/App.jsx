@@ -371,7 +371,7 @@ export default function App() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <div className="flex justify-center text-gray-600 sm:justify-start dark:text-white">
-              <img src="/logo.png" className="h-11" alt="MBF Logo" />
+              <img src="./logo.png" className="h-11" alt="AU Logo" />
               <span className="font-Revans self-center px-3 pt-3 text-2xl font-semibold whitespace-nowrap sm:pt-0">
                 Amanatul Ummah Try Out Statistics
               </span>
