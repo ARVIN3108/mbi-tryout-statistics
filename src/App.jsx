@@ -46,19 +46,19 @@ function convertDateString(dateString) {
 }
 
 export default function App() {
-  const type = ["saintek", "soshum", "khos"];
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedDate, setSelectedDate] = useState(0);
+  const [selectedDate, setSelectedDate] = useState(date[0]);
   const [selectedType, setSelectedType] = useState(0);
 
   // The path is relative to the `public` folder
   function changeData(valDate, valType) {
     setSearchTerm("");
     setSelectedDate(valDate);
+    if (!valDate.types[valType]) valType = 0;
     setSelectedType(valType);
-    readData(base + `data/${date[valDate]}/${type[valType]}.xlsx`);
+    readData(base + `data/${valDate.date}/${valDate.types[valType]}.xlsx`);
   }
 
   function readData(filePath) {
@@ -81,7 +81,10 @@ export default function App() {
   }
 
   useEffect(() => {
-    readData(base + `data/${date[selectedDate]}/${type[selectedType]}.xlsx`);
+    readData(
+      base +
+        `data/${selectedDate.date}/${selectedDate.types[selectedType]}.xlsx`,
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // The empty dependency array ensures this effect runs only once
 
@@ -144,7 +147,7 @@ export default function App() {
                   d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"
                 />
               </svg>
-              {convertDateString(date[selectedDate])}
+              {convertDateString(selectedDate.date)}
               <svg
                 className="ms-2.5 h-2.5 w-2.5"
                 aria-hidden="true"
@@ -187,21 +190,18 @@ export default function App() {
                         type="radio"
                         defaultValue=""
                         name="date-radio"
-                        checked={key == selectedDate}
+                        checked={date[key] == selectedDate}
                         className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
                         onChange={() => {
-                          if (key != selectedDate) {
-                            if (key == date.length - 1 && selectedType == 2)
-                              changeData(key, 0);
-                            else changeData(key, selectedType);
-                          }
+                          if (date[key] != selectedDate)
+                            changeData(date[key], selectedType);
                         }}
                       />
                       <label
                         htmlFor={`date-` + key}
                         className="ms-2 w-full rounded-sm text-sm font-medium text-gray-900 dark:text-gray-300"
                       >
-                        {convertDateString(str)}
+                        {convertDateString(str.date)}
                       </label>
                     </div>
                   </li>
@@ -231,8 +231,7 @@ export default function App() {
                   d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"
                 />
               </svg>
-
-              {type[selectedType]?.toUpperCase()}
+              {selectedDate.types[selectedType]?.toUpperCase()}
               <svg
                 className="ms-2.5 h-2.5 w-2.5"
                 aria-hidden="true"
@@ -267,8 +266,7 @@ export default function App() {
                 className="space-y-1 p-3 text-sm text-gray-700 dark:text-gray-200"
                 aria-labelledby="typeDropdownButton"
               >
-                {type.map((str, key) => {
-                  if (selectedDate == date.length - 1 && key == 2) return;
+                {selectedDate.types.map((str, key) => {
                   return (
                     <li key={key}>
                       <div className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
@@ -326,17 +324,17 @@ export default function App() {
             />
           </div>
         </div>
-        {selectedDate == date.length - 1
+        {selectedDate == date[date.length - 1]
           ? (selectedType == 0 && <SAINTEKOldTable data={filteredData} />) ||
             (selectedType == 1 && <SOSHUMOldTable data={filteredData} />)
           : (selectedType == 0 &&
-              (date[selectedDate] == "10-8-25" ? (
+              (selectedDate.average ? (
                 <SAINTEKWithAverageTable data={filteredData} />
               ) : (
                 <SAINTEKTable data={filteredData} />
               ))) ||
             (selectedType == 1 &&
-              (date[selectedDate] == "10-8-25" ? (
+              (selectedDate.average ? (
                 <SOSHUMWithAverageTable data={filteredData} />
               ) : (
                 <SOSHUMTable data={filteredData} />
