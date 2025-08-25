@@ -9,7 +9,7 @@ import SOSHUMOldTable from "./tables/SOSHUMOldTable";
 import SOSHUMTable from "./tables/SOSHUMTable";
 import SOSHUMWithAverageTable from "./tables/SOSHUMWithAverageTable";
 import KHOSTable from "./tables/KHOSTable";
-import { Button, Menu, MenuTrigger } from "@material-tailwind/react";
+import { Button, Menu } from "@material-tailwind/react";
 
 // A utility function to delay the execution of a function.
 // This prevents the search logic from running on every keystroke,
@@ -280,92 +280,6 @@ export default function App() {
                 </ul>
               </Menu.Content>
             </Menu>
-            {/* <button
-              id="typeDropdownButton"
-              data-dropdown-toggle="typeDropdown"
-              className="ml-2 inline-flex items-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm font-medium text-gray-500 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-              type="button"
-            >
-              <svg
-                className="me-3 h-3 w-3 scale-150 text-gray-500 dark:text-gray-400"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                fill="none"
-                viewBox="0 0 22 22"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z"
-                />
-              </svg>
-              {selectedDate.types[selectedType]?.toUpperCase()}
-              <svg
-                className="ms-2.5 h-2.5 w-2.5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="m1 1 4 4 4-4"
-                />
-              </svg>
-            </button> */}
-            {/* Dropdown menu */}
-            {/* <div
-              id="typeDropdown"
-              className="z-10 hidden w-48 divide-y divide-gray-100 rounded-lg bg-white shadow-sm dark:divide-gray-600 dark:bg-gray-700"
-              data-popper-reference-hidden=""
-              data-popper-escaped=""
-              data-popper-placement="top"
-              style={{
-                position: "absolute",
-                inset: "auto auto 0px 0px",
-                margin: 0,
-                transform: "translate3d(522.5px, 3847.5px, 0px)",
-              }}
-            >
-              <ul
-                className="space-y-1 p-3 text-sm text-gray-700 dark:text-gray-200"
-                aria-labelledby="typeDropdownButton"
-              >
-                {selectedDate.types.map((str, key) => {
-                  return (
-                    <li key={key}>
-                      <div className="flex items-center rounded-sm p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
-                        <input
-                          id={`type-` + key}
-                          type="radio"
-                          defaultValue=""
-                          name="type-radio"
-                          checked={key == selectedType}
-                          className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
-                          onChange={() => {
-                            if (key != selectedType)
-                              changeData(selectedDate, key);
-                          }}
-                        />
-                        <label
-                          htmlFor={`type-` + key}
-                          className="ms-2 w-full rounded-sm text-sm font-medium text-gray-900 dark:text-gray-300"
-                        >
-                          {str.toUpperCase()}
-                        </label>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div> */}
           </div>
           <label htmlFor="table-search" className="sr-only">
             Search
