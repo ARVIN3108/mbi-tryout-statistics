@@ -120,7 +120,7 @@ export default function KHOSTable({ data }) {
                   return (
                     <td
                       key={cellIndex}
-                      className={`px-6 py-4 ${cellIndex === 22 && `text-gray-900 dark:text-white ${rowIndex === data.length - 1 && "rounded-br-lg"}`}`}
+                      className={`px-6 py-4 ${cellIndex == 22 && `text-gray-900 dark:text-white ${rowIndex == data.length - 1 && "rounded-br-lg"}`}`}
                     >
                       {cell}
                     </td>

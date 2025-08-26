@@ -110,7 +110,7 @@ export default function SAINTEKWithAverageTable({ data }) {
                   return (
                     <td
                       key={cellIndex}
-                      className={`px-6 py-4 ${cellIndex === 19 && `text-gray-900 dark:text-white ${rowIndex === data.length - 1 && "rounded-br-lg"}`}`}
+                      className={`px-6 py-4 ${cellIndex == 19 && `text-gray-900 dark:text-white ${rowIndex == data.length - 1 && "rounded-br-lg"}`}`}
                     >
                       {cell}
                     </td>

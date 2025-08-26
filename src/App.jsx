@@ -104,7 +104,7 @@ export default function App() {
         const newData = data.filter(
           (student) =>
             student[2]?.toString().toLowerCase().includes(newSearchTerm) ||
-            student[1]?.toString() === newSearchTerm,
+            student[1]?.toString() == newSearchTerm,
         );
         setFilteredData(newData);
       }
